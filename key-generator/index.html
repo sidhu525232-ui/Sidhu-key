@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SIDHU CROP ⚡ · Key Generator</title>
+<style>
+:root{--bg:#050c20;--panel:#09173a;--edge:#1f3c80;--gold:#d9bd7d;--blue:#2f6bff;--text:#dbe6ff;--mute:#7f98d8}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(1200px 600px at 70% -10%,#0f2560 0%,transparent 60%),var(--bg);color:var(--text);
+ font-family:'Cormorant Garamond','Palatino Linotype','Book Antiqua',Georgia,serif;font-size:16px;min-height:100vh}
+.wrap{max-width:980px;margin:0 auto;padding:22px 14px 60px}
+header{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+header img{width:58px;height:58px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);box-shadow:0 0 18px var(--blue)}
+h1{margin:0;font-size:28px;letter-spacing:.16em;color:#e7cd91;font-weight:600}
+header small{color:var(--mute);letter-spacing:.08em}
+.card{background:linear-gradient(180deg,#0b1d48,#07122e);border:1px solid var(--edge);border-radius:14px;padding:18px;margin-bottom:16px;box-shadow:inset 0 0 0 1px rgba(217,189,125,.12)}
+h2{margin:0 0 12px;font-size:19px;letter-spacing:.1em;color:#e7cd91;font-weight:600}
+label{display:block;color:var(--mute);font-size:13px;letter-spacing:.08em;margin:10px 0 4px}
+input,select,textarea{width:100%;background:#040a1d;border:1px solid #27478f;border-radius:9px;color:#fff;padding:11px;font:inherit;font-size:15px;outline:none}
+input:focus,select:focus{border-color:var(--gold)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.row{grid-template-columns:1fr}}
+button{font:inherit;cursor:pointer;border-radius:9px;padding:10px 16px;border:1px solid #4d7dff;background:linear-gradient(180deg,#2d63e6,#1a3fa0);color:#fff;letter-spacing:.06em}
+button.gold{background:linear-gradient(180deg,#e7cd91,#b99552);border-color:#f3dfae;color:#1a1204;font-weight:700}
+button.ghost{background:#0b1d47;border-color:#27478f;color:#bcd0ff}
+button.sm{padding:5px 10px;font-size:13px}
+button.red{background:#4a1220;border-color:#a33a55;color:#ffd0da}
+.keybox{margin-top:12px;background:#040a1d;border:1px dashed var(--gold);border-radius:10px;padding:12px;word-break:break-all;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;color:#fff}
+.msg{margin-top:8px;min-height:18px;font-size:14px;color:#ffb4b4}.msg.ok{color:#9cf0b8}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:8px 6px;border-bottom:1px solid #16306b;text-align:left;vertical-align:top}
+th{color:var(--mute);font-weight:600;letter-spacing:.08em;font-size:12px}
+.pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:12px;border:1px solid}
+.pill.a{color:#9cf0b8;border-color:#2f7a52}.pill.r{color:#ffb4b4;border-color:#a33a55}
+.mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.scroll{overflow-x:auto}
+.note{color:var(--mute);font-size:13px;line-height:1.5}
+.warn{color:#ffd36b}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img id="logo" alt="" onerror="this.style.display='none'" src="logo.png">
+    <div><h1>SIDHU CROP ⚡</h1><small>Key generator · private admin page</small></div>
+  </header>
+
+  <div class="card" id="setup">
+    <h2>1 · Signing key</h2>
+    <div id="keyState" class="note"></div>
+    <div class="tools">
+      <button class="ghost" id="btnImport">Import private key file</button>
+      <button class="ghost" id="btnNew">Create new signing key</button>
+      <button class="ghost" id="btnExpPriv">Download private key</button>
+    </div>
+    <input type="file" id="fPriv" accept=".json" hidden>
+    <div class="msg" id="setupMsg"></div>
+    <div id="pubWrap" style="display:none">
+      <label>PUBLIC KEY (goes inside the extension's background.js → PUBLIC_JWK)</label>
+      <div class="keybox" id="pubBox"></div>
+      <div class="tools"><button class="ghost sm" id="btnCopyPub">Copy public key</button></div>
+    </div>
+    <p class="note warn">Keep the private key file secret. Never upload it to the website host. It stays only in this browser (and your backup file).</p>
+  </div>
+
+  <div class="card">
+    <h2>2 · Create a key</h2>
+    <div class="row">
+      <div><label>CUSTOMER / NOTE</label><input id="cust" placeholder="Name or note (optional)"></div>
+      <div><label>PLAN</label>
+        <select id="plan"><option value="30">30 Days</option><option value="L">Lifetime</option></select></div>
+    </div>
+    <label>DEVICE ID (customer copies it from the extension's key page)</label>
+    <input id="dev" placeholder="SC-XXXX-XXXX-XXXX-XXXX" spellcheck="false" autocapitalize="characters">
+    <div class="tools"><button class="gold" id="btnGen">Generate key</button></div>
+    <div class="msg" id="genMsg"></div>
+    <div id="outWrap" style="display:none">
+      <div class="keybox" id="outKey"></div>
+      <div class="tools"><button class="ghost sm" id="btnCopyKey">Copy key</button></div>
+    </div>
+    <p class="note">The 30 days start when the customer activates the key. One key works on that one device only.</p>
+  </div>
+
+  <div class="card">
+    <h2>3 · History (never deleted)</h2>
+    <input id="search" placeholder="Search name, device ID or key ID">
+    <div class="tools">
+      <button class="ghost sm" id="btnExport">Download backup (.json)</button>
+      <button class="ghost sm" id="btnImpHist">Import backup</button>
+      <button class="ghost sm" id="btnRevFile">Download revoked.json</button>
+    </div>
+    <input type="file" id="fHist" accept=".json" hidden>
+    <p class="note" id="histInfo"></p>
+    <div class="scroll"><table>
+      <thead><tr><th>Date</th><th>Customer</th><th>Plan</th><th>Device</th><th>Key ID</th><th>Status</th><th></th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table></div>
+    <p class="note">To stop a key at any time: press <b>Stop key</b>, then download <b>revoked.json</b> and upload it to your hosting (same place as this page). Put that file's web address in <span class="mono">REVOKE_URL</span> inside the extension's background.js. Extensions re-check it every 30 minutes.</p>
+  </div>
+</div>
+
+<script>
+(() => {
+  'use strict';
+  const $ = (id) => document.getElementById(id);
+  const LS_PRIV = 'sc_priv_jwk', LS_PUB = 'sc_pub_jwk', LS_H = 'sc_history', LS_H2 = 'sc_history_bak';
+  const b64u = (buf) => { let s = ''; new Uint8Array(buf).forEach((b) => (s += String.fromCharCode(b))); return btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); };
+  const dl = (name, text) => { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([text], { type: 'application/json' })); a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000); };
+  const copy = async (t, btn) => { try { await navigator.clipboard.writeText(t); } catch (e) { const x = document.createElement('textarea'); x.value = t; document.body.appendChild(x); x.select(); document.execCommand('copy'); x.remove(); } if (btn) { const o = btn.textContent; btn.textContent = 'Copied'; setTimeout(() => (btn.textContent = o), 1100); } };
+  const say = (id, m, ok) => { const e = $(id); e.textContent = m; e.className = 'msg' + (ok ? ' ok' : ''); };
+  const esc = (s) => String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  /* ---- history (kept in two places, never deleted) ---- */
+  const loadH = () => { try { const a = JSON.parse(localStorage.getItem(LS_H) || 'null'); if (Array.isArray(a)) return a; } catch (e) {} try { const b = JSON.parse(localStorage.getItem(LS_H2) || '[]'); return Array.isArray(b) ? b : []; } catch (e) { return []; } };
+  const saveH = (a) => { const s = JSON.stringify(a); localStorage.setItem(LS_H, s); localStorage.setItem(LS_H2, s); };
+
+  /* ---- signing key ---- */
+  let priv = null;
+  async function loadKeys() {
+    const raw = localStorage.getItem(LS_PRIV);
+    if (!raw) { priv = null; return; }
+    priv = await crypto.subtle.importKey('jwk', JSON.parse(raw), { name: 'ECDSA', namedCurve: 'P-256' }, false, ['sign']);
+  }
+  function showKeyState() {
+    const has = !!localStorage.getItem(LS_PRIV);
+    $('keyState').innerHTML = has ? '<span style="color:#9cf0b8">Signing key loaded ✔</span>' : '<span class="warn">No signing key in this browser. Import your private key file (or create a new one).</span>';
+    const pub = localStorage.getItem(LS_PUB);
+    $('pubWrap').style.display = pub ? 'block' : 'none';
+    if (pub) $('pubBox').textContent = pub;
+  }
+  async function setPrivate(jwk) {
+    const test = await crypto.subtle.importKey('jwk', jwk, { name: 'ECDSA', namedCurve: 'P-256' }, true, ['sign']);
+    const pubJwk = { kty: jwk.kty, crv: jwk.crv, x: jwk.x, y: jwk.y };
+    localStorage.setItem(LS_PRIV, JSON.stringify(jwk));
+    localStorage.setItem(LS_PUB, JSON.stringify(pubJwk));
+    await loadKeys(); showKeyState();
+  }
+  $('btnImport').onclick = () => $('fPriv').click();
+  $('fPriv').onchange = async (e) => {
+    try { const t = await e.target.files[0].text(); await setPrivate(JSON.parse(t)); say('setupMsg', 'Private key imported', true); } catch (er) { say('setupMsg', 'That file is not a valid private key'); }
+    e.target.value = '';
+  };
+  $('btnNew').onclick = async () => {
+    if (localStorage.getItem(LS_PRIV) && !confirm('A signing key already exists. A NEW key makes ALL old keys stop working on every device (extension needs the new public key). Continue?')) return;
+    const kp = await crypto.subtle.generateKey({ name: 'ECDSA', namedCurve: 'P-256' }, true, ['sign', 'verify']);
+    const jwk = await crypto.subtle.exportKey('jwk', kp.privateKey);
+    await setPrivate(jwk); dl('PRIVATE_KEY_KEEP_SECRET.json', JSON.stringify(jwk));
+    say('setupMsg', 'New key created. Private key downloaded - keep it safe, and paste the new public key into the extension.', true);
+  };
+  $('btnExpPriv').onclick = () => { const r = localStorage.getItem(LS_PRIV); if (r) dl('PRIVATE_KEY_KEEP_SECRET.json', r); else say('setupMsg', 'No private key here'); };
+  $('btnCopyPub').onclick = (e) => copy(localStorage.getItem(LS_PUB) || '', e.target);
+
+  /* ---- generate ---- */
+  $('btnGen').onclick = async () => {
+    try {
+      if (!priv) return say('genMsg', 'Import your private key first (step 1)');
+      const dev = $('dev').value.trim().toUpperCase();
+      if (!/^SC-[0-9A-F]{4}(-[0-9A-F]{4}){3}$/.test(dev)) return say('genMsg', 'Device ID must look like SC-XXXX-XXXX-XXXX-XXXX');
+      const plan = $('plan').value;
+      const hist = loadH();
+      const id = 'K' + Array.from(crypto.getRandomValues(new Uint8Array(5)), (b) => b.toString(16).padStart(2, '0')).join('').toUpperCase();
+      const payload = { v: 1, id, d: dev, t: plan, days: plan === '30' ? 30 : 0, iat: Date.now() };
+      const bytes = new TextEncoder().encode(JSON.stringify(payload));
+      const sig = await crypto.subtle.sign({ name: 'ECDSA', hash: 'SHA-256' }, priv, bytes);
+      const key = 'SC1.' + b64u(bytes) + '.' + b64u(sig);
+      hist.unshift({ id, customer: $('cust').value.trim(), plan, device: dev, created: payload.iat, key, revoked: false, revokedAt: 0 });
+      saveH(hist);
+      $('outKey').textContent = key; $('outWrap').style.display = 'block';
+      say('genMsg', 'Key created and saved to history', true);
+      render();
+    } catch (e) { say('genMsg', 'Could not create key: ' + e.message); }
+  };
+  $('btnCopyKey').onclick = (e) => copy($('outKey').textContent, e.target);
+
+  /* ---- history table ---- */
+  function render() {
+    const q = $('search').value.trim().toLowerCase();
+    const hist = loadH();
+    const rows = $('rows'); rows.innerHTML = '';
+    hist.filter((h) => !q || [h.customer, h.device, h.id].join(' ').toLowerCase().includes(q)).forEach((h) => {
+      const tr = document.createElement('tr');
+      const d = new Date(h.created).toLocaleString();
+      tr.innerHTML = '<td>' + esc(d) + '</td><td>' + esc(h.customer || '-') + '</td><td>' + (h.plan === 'L' ? 'Lifetime' : '30 Days') + '</td><td class="mono">' + esc(h.device) + '</td><td class="mono">' + esc(h.id) + '</td><td><span class="pill ' + (h.revoked ? 'r' : 'a') + '">' + (h.revoked ? 'Stopped' : 'Active') + '</span></td><td></td>';
+      const td = tr.lastChild;
+      const c = document.createElement('button'); c.className = 'ghost sm'; c.textContent = 'Copy key'; c.onclick = () => copy(h.key, c); td.appendChild(c);
+      const r = document.createElement('button'); r.className = 'sm ' + (h.revoked ? 'ghost' : 'red'); r.style.marginLeft = '6px'; r.textContent = h.revoked ? 'Restore' : 'Stop key';
+      r.onclick = () => { if (!h.revoked && !confirm('Stop this key?')) return; const all = loadH(); const x = all.find((e) => e.id === h.id); x.revoked = !x.revoked; x.revokedAt = x.revoked ? Date.now() : 0; saveH(all); render(); };
+      td.appendChild(r); rows.appendChild(tr);
+    });
+    $('histInfo').textContent = hist.length + ' key(s) in history · ' + hist.filter((h) => h.revoked).length + ' stopped. Download a backup now and then - browser data can be cleared.';
+  }
+  $('search').oninput = render;
+  $('btnExport').onclick = () => dl('sidhu-crop-history-' + new Date().toISOString().slice(0, 10) + '.json', JSON.stringify(loadH(), null, 1));
+  $('btnImpHist').onclick = () => $('fHist').click();
+  $('fHist').onchange = async (e) => {
+    try {
+      const inc = JSON.parse(await e.target.files[0].text()); if (!Array.isArray(inc)) throw 0;
+      const cur = loadH(); const seen = new Set(cur.map((x) => x.id));
+      inc.forEach((x) => { if (x && x.id && x.key && !seen.has(x.id)) cur.push(x); });
+      cur.sort((a, b) => b.created - a.created); saveH(cur); render();
+    } catch (er) { alert('That backup file is not valid'); }
+    e.target.value = '';
+  };
+  $('btnRevFile').onclick = () => dl('revoked.json', JSON.stringify({ updated: Date.now(), revoked: loadH().filter((h) => h.revoked).map((h) => h.id) }, null, 1));
+
+  (async () => { try { await loadKeys(); } catch (e) {} showKeyState(); render(); })();
+})();
+</script>
+</body>
+</html>
